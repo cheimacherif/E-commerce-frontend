@@ -10,7 +10,7 @@ const role = require('../../middleware/role');
 const store = require('../../utils/store');
 const { ROLES, MERCHANT_STATUS } = require('../../constants');
 
-router.post('/add', auth, role.check(ROLES.Admin), async (req, res) => {
+router.post('/add', auth, async (req, res) => {
   try {
     const name = req.body.name;
     const description = req.body.description;

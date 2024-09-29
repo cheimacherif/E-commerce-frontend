@@ -179,7 +179,7 @@ router.get('/list/select', auth, async (req, res) => {
 router.post(
   '/add',
   auth,
-  role.check(ROLES.Admin, ROLES.Merchant),
+  // role.check(ROLES.Admin, ROLES.Merchant),
   upload.single('image'),
   async (req, res) => {
     try {
@@ -240,8 +240,10 @@ router.post(
         product: savedProduct
       });
     } catch (error) {
+      console.error(error);  // Log the actual error
       return res.status(400).json({
-        error: 'Your request could not be processed. Please try again.'
+        error: 'Your request could not be processed. Please try again.',
+        details: error.message  // Optionally include error details in the response
       });
     }
   }

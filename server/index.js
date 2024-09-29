@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: './.env.example' }); 
 const express = require('express');
 const chalk = require('chalk');
 const cors = require('cors');
@@ -11,6 +11,8 @@ const setupDB = require('./utils/db');
 
 const { port } = keys;
 const app = express();
+
+console.log('JWT_SECRET:', process.env.JWT_SECRET);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
